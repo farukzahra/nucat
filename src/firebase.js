@@ -5,7 +5,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore, collection, addDoc, doc, setDoc, getDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "",
+    apiKey: "AIzaSyDg89W05qZn0Fh5xSnwiSWzowineLPY1eo",
     authDomain: "nucat-efed0.firebaseapp.com",
     projectId: "nucat-efed0",
     storageBucket: "nucat-efed0.firebasestorage.app",
