@@ -117,9 +117,10 @@ export default {
 
       const formattedTransactions = processedTransactions.map(tx => ({
         ...tx,
-        description: (tx.description || '') 
-          .replace(/Compra no débito - /g, '[DÉBITO] ')
-          .replace(/Pagamento de boleto efetuado - /g, '[BOLETO] '),
+        description: (tx.description || '')
+          .replace(/Compra no débito - /g, 'DÉBITO - ')
+          .replace(/Pagamento de boleto efetuado - /g, 'BOLETO - ')
+          .replace(/Transferência enviada pelo Pix - ([^-]+) - .*/, 'Pix para $1'),
       }));
 
       this.$store.commit('SET_TRANSACTIONS', formattedTransactions);
@@ -135,7 +136,13 @@ export default {
       return 'Outros';
     },
     async saveCategory(index, newCategory) {
+      // Atualiza a categoria no Vuex
       this.$store.commit('UPDATE_TRANSACTION_CATEGORY', { index, category: newCategory });
+
+      // Salva a alteração no Firebase
+      const userId = this.user.uid;
+      const transactions = this.transactions;
+      await this.saveTransactions(userId, transactions);
     },
     async removeTransaction(index) {
       if (confirm('Tem certeza que deseja remover esta transação?')) {
