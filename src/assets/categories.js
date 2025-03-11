@@ -1,6 +1,7 @@
 // src/assets/categories.js
 export const categories = [
     // Alimentação
+    { keyword: 'gula', category: 'Alimentação' },
     { keyword: 'supermercado', category: 'Alimentação' },
     { keyword: 'mercado', category: 'Alimentação' },
     { keyword: 'restaurante', category: 'Alimentação' },
