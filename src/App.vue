@@ -24,8 +24,8 @@ import LogoutButton from "@/components/LogoutButton.vue";
 import FileUpload from "@/components/FileUpload.vue";
 import PieChart from "@/components/PieChart.vue";
 import TransactionTable from "@/components/TransactionTable.vue";
-import { categories } from "@/assets/categories";
 import { mapState, mapActions } from 'vuex';
+import { stringToColor } from '@/utils/colors-gen'; 
 
 export default {
   components: {
@@ -35,21 +35,11 @@ export default {
     PieChart,
     TransactionTable,
   },
-  data() {
-    return {
-      categoryColors: {
-        "Alimentação": "#FF6384",
-        "Transporte": "#36A2EB",
-        "Saúde": "#4BC0C0",
-        "Lazer": "#FFCE56",
-        "Educação": "#9966FF",
-        "Compras": "#FF9F40",
-        "Outros": "#C9CBCF",
-      },
-    };
-  },
   computed: {
     ...mapState(['user', 'transactions']),
+    categoryColors() {
+      return this.generateCategoryColors();
+    },
   },
   async created() {
     auth.onAuthStateChanged(async (user) => {
@@ -105,7 +95,6 @@ export default {
       }
     },
     processTransactions(transactions) {
-
       const processedTransactions = transactions
         .filter(tx => parseFloat(tx.TRNAMT) < 0)
         .map((tx) => ({
@@ -117,31 +106,48 @@ export default {
 
       const formattedTransactions = processedTransactions.map(tx => ({
         ...tx,
-        description: (tx.description || '') 
-          .replace(/Compra no débito - /g, '[DÉBITO] ')
-          .replace(/Pagamento de boleto efetuado - /g, '[BOLETO] '),
+        description: (tx.description || '')
+          .replace(/Compra no débito - /g, 'DÉBITO - ')
+          .replace(/Pagamento de boleto efetuado - /g, 'BOLETO - ')
+          .replace(/Transferência enviada pelo Pix - ([^-]+) - .*/, 'Pix para $1'),
       }));
 
       this.$store.commit('SET_TRANSACTIONS', formattedTransactions);
     },
     inferCategory(description) {
       description = description.toLowerCase();
-      for (const { keyword, category } of categories) {
+      for (const { keyword, category } of this.$store.getters.categories) {
         const regex = new RegExp(`\\b${keyword}\\b`, 'i');
         if (regex.test(description)) {
+          console.log(description, category);
           return category;
         }
       }
       return 'Outros';
     },
     async saveCategory(index, newCategory) {
+      // Atualiza a categoria no Vuex
       this.$store.commit('UPDATE_TRANSACTION_CATEGORY', { index, category: newCategory });
+
+      // Salva a alteração no Firebase
+      const userId = this.user.uid;
+      const transactions = this.transactions;
+      await this.saveTransactions(userId, transactions);
     },
     async removeTransaction(index) {
       if (confirm('Tem certeza que deseja remover esta transação?')) {
         this.$store.commit('REMOVE_TRANSACTION', index);
       }
     },
+    generateCategoryColors() {
+      const colors = {};
+      if (this.$store.getters.categories) {
+        this.$store.getters.categories.forEach(category => {
+          colors[category.category] = stringToColor(category.category);
+        });
+      }
+      return colors;
+    },   
   },
 };
 </script>

@@ -1,5 +1,8 @@
 // src/assets/categories.js
-export const categories = [
+module.exports = [
+    //Pix
+    { keyword: 'pix', category: 'Pix' },
+
     // Alimentação
     { keyword: 'gula', category: 'Alimentação' },
     { keyword: 'supermercado', category: 'Alimentação' },
@@ -322,31 +325,12 @@ export const categories = [
     { keyword: 'material de construção', category: 'Compras' },
     { keyword: 'jardinagem', category: 'Compras' },
     { keyword: 'petshop', category: 'Compras' },
-  
-    // Outros
-    { keyword: 'banco', category: 'Outros' },
-    { keyword: 'tarifa', category: 'Outros' },
-    { keyword: 'imposto', category: 'Outros' },
-    { keyword: 'doação', category: 'Outros' },
-    { keyword: 'presente', category: 'Outros' },
-    { keyword: 'transferência', category: 'Outros' },
-    { keyword: 'pagamento', category: 'Outros' },
-    { keyword: 'boleto', category: 'Outros' },
-    { keyword: 'conta', category: 'Outros' },
-    { keyword: 'luz', category: 'Outros' },
-    { keyword: 'água', category: 'Outros' },
-    { keyword: 'gás', category: 'Outros' },
-    { keyword: 'telefone', category: 'Outros' },
-    { keyword: 'internet', category: 'Outros' },
-    { keyword: 'tv a cabo', category: 'Outros' },
-    { keyword: 'streaming', category: 'Outros' },
-    { keyword: 'assinatura', category: 'Outros' },
-    { keyword: 'seguro', category: 'Outros' },
-    { keyword: 'investimento', category: 'Outros' },
-    { keyword: 'poupança', category: 'Outros' },
-    { keyword: 'aposentadoria', category: 'Outros' },
-    { keyword: 'previdência', category: 'Outros' },
-    { keyword: 'empréstimo', category: 'Outros' },
-    { keyword: 'financiamento', category: 'Outros' },
-    { keyword: 'consórcio', category: 'Outros' },
+
+    { keyword: 'outros', category: 'Outros' },
+
+    { keyword: 'aplicacao', category: 'Investimento' },
+    { keyword: 'aplicação', category: 'Investimento' },
+    { keyword: 'tesouro', category: 'Investimento' },
+    
+    { keyword: 'boleto', category: 'Boleto' },
   ];

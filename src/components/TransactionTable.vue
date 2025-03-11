@@ -32,8 +32,8 @@ export default {
     },
   },
   methods: {
-    startEditCategory(index) {
-      this.$emit('edit-category', index);
+    startEditCategory(index, selectedCategory) {
+      this.$emit('edit-category', index, selectedCategory);
     },
     removeTransaction(index) {
       this.$emit('remove-transaction', index);
