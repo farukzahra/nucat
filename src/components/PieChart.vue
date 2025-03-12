@@ -6,6 +6,7 @@
 
 <script>
 import Chart from 'chart.js/auto';
+import { stringToColor } from '@/utils/colors-gen';
 
 export default {
   props: {
@@ -40,7 +41,7 @@ export default {
 
       // Use as cores dinâmicas
       const backgroundColors = Object.keys(categories).map(
-        (category) => this.categoryColors[category] || '#C9CBCF' // Cor padrão se não houver cor definida
+        (category) => this.categoryColors[category] || stringToColor(category) || '#C9CBCF' // Cor padrão se não houver cor definida
       );
 
       this.pieChart = new Chart(ctx, {
