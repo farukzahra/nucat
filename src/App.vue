@@ -7,7 +7,11 @@
           <v-row>
             <v-col>
               <div v-if="!user">
-                <LoginButton @login-success="handleLoginSuccess" />
+                <v-row>
+                  <v-col cols="12">
+                    <LoginButton @login-success="handleLoginSuccess" />
+                  </v-col>
+                </v-row>
               </div>
               <div v-else>
                 <v-row>
