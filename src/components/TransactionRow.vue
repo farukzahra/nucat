@@ -8,16 +8,13 @@
         v-if="editing"
         v-model="selectedCategory"
         :items="categories"
-        @change="saveCategory"
+        @update:modelValue="saveCategory"
         @keydown.esc="cancelEdit"
-        dense
-        outlined
       />
       <v-chip
         v-else
         @click="startEdit"
         :color="categoryColors[transaction.category]"
-        dark
       >
         {{ transaction.category }}
       </v-chip>

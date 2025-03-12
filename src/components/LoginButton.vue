@@ -24,5 +24,4 @@ export default {
 </script>
 
 <style scoped>
-/* Remova os estilos antigos, pois o Vuetify já cuida do estilo do botão */
 </style>
