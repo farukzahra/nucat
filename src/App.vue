@@ -1,19 +1,41 @@
 <template>
-  <div class="container">
-    <div v-if="!user">
-      <LoginButton @login-success="handleLoginSuccess" />
-    </div>
-    <div v-else>
-      <LogoutButton @logout-success="handleLogoutSuccess" />
-      <div class="logo">
-        <img src="@/assets/logo.jpg" alt="Logo" class="logo-image" />
-      </div>
-      <FileUpload @file-uploaded="handleFileUpload" />
-      <PieChart v-if="transactions.length" :transactions="transactions" :category-colors="categoryColors" />
-      <TransactionTable v-if="transactions.length" :transactions="transactions" @edit-category="saveCategory"
-        @remove-transaction="removeTransaction" />
-    </div>
-  </div>
+  <v-responsive class="border rounded">
+
+    <v-app>
+      <v-main>
+        <v-container fluid>
+          <v-row>
+            <v-col>
+              <div v-if="!user">
+                <LoginButton @login-success="handleLoginSuccess" />
+              </div>
+              <div v-else>
+                <v-row>
+                  <v-col>
+                    <v-img src="./src/assets/logo.jpg" class="logo-image" />
+                  </v-col>
+                  <v-col cols="8">
+                    <FileUpload @file-uploaded="handleFileUpload" />
+                  </v-col>
+                  <v-col>
+                    <LogoutButton @logout-success="handleLogoutSuccess" />
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col>
+                    <PieChart v-if="transactions.length" :transactions="transactions"
+                      :category-colors="categoryColors" />
+                    <TransactionTable v-if="transactions.length" :transactions="transactions"
+                      @edit-category="saveCategory" @remove-transaction="removeTransaction" />
+                  </v-col>
+                </v-row>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
+  </v-responsive>
 </template>
 
 <script>
@@ -25,7 +47,7 @@ import FileUpload from "@/components/FileUpload.vue";
 import PieChart from "@/components/PieChart.vue";
 import TransactionTable from "@/components/TransactionTable.vue";
 import { mapState, mapActions } from 'vuex';
-import { stringToColor } from '@/utils/colors-gen'; 
+import { stringToColor } from '@/utils/colors-gen';
 
 export default {
   components: {
@@ -57,6 +79,7 @@ export default {
       await this.loadUserAndTransactions(user);
     },
     async handleFileUpload(file) {
+      console.log(file);
       const reader = new FileReader();
       reader.onload = async (e) => {
         const content = e.target.result;
@@ -126,10 +149,7 @@ export default {
       return 'Outros';
     },
     async saveCategory(index, newCategory) {
-      // Atualiza a categoria no Vuex
       this.$store.commit('UPDATE_TRANSACTION_CATEGORY', { index, category: newCategory });
-
-      // Salva a alteração no Firebase
       const userId = this.user.uid;
       const transactions = this.transactions;
       await this.saveTransactions(userId, transactions);
@@ -147,29 +167,14 @@ export default {
         });
       }
       return colors;
-    },   
+    },
   },
 };
 </script>
 
 <style scoped>
-.container {
-  width: 100%;
-  max-width: 900px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  position: relative;
-}
-
-.logo {
-  margin-bottom: 20px;
-}
-
 .logo-image {
-  max-width: 10%;
-  height: auto;
+  max-width: 100px;
+  margin-bottom: 20px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="logout-container">
-    <a href="#" @click.prevent="handleLogout" class="logout-link">Sair</a>
-  </div>
+  <v-btn color="error" @click="handleLogout" class="logout-button">
+    Sair
+  </v-btn>
 </template>
 
 <script>
@@ -18,21 +18,5 @@ export default {
 </script>
 
 <style scoped>
-.logout-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
 
-.logout-link {
-  color: #ff4500;
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s ease;
-}
-
-.logout-link:hover {
-  color: #e63900;
-  text-decoration: underline;
-}
 </style>

@@ -1,21 +1,25 @@
 <template>
-  <div class="transaction-table">
-    <div class="transaction-row header">
-      <div class="transaction-cell">Data</div>
-      <div class="transaction-cell">Descrição</div>
-      <div class="transaction-cell">Valor</div>
-      <div class="transaction-cell">Categoria</div>
-      <div class="transaction-cell"></div>
-    </div>
-    <TransactionRow
-      v-for="(transaction, index) in transactions"
-      :key="index"
-      :transaction="transaction"
-      :index="index"
-      @edit-category="startEditCategory"
-      @remove-transaction="removeTransaction"
-    />
-  </div>
+  <v-table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <TransactionRow
+        v-for="(transaction, index) in transactions"
+        :key="index"
+        :transaction="transaction"
+        :index="index"
+        @edit-category="startEditCategory"
+        @remove-transaction="removeTransaction"
+      />
+    </tbody>
+  </v-table>
 </template>
 
 <script>
@@ -43,40 +47,5 @@ export default {
 </script>
 
 <style scoped>
-.transaction-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-.transaction-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background 0.3s ease;
-}
-
-.transaction-row:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.transaction-row.header {
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.transaction-cell {
-  flex: 1;
-  text-align: center;
-  padding: 8px;
-  word-wrap: break-word;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* Remova os estilos antigos, pois o Vuetify já cuida do estilo da tabela */
 </style>
