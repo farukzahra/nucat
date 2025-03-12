@@ -12,7 +12,7 @@
               <div v-else>
                 <v-row>
                   <v-col>
-                    <v-img src="./src/assets/logo.jpg" class="logo-image" />
+                    <v-img src="logo.jpg" class="logo-image" />
                   </v-col>
                   <v-col cols="8">
                     <FileUpload @file-uploaded="handleFileUpload" />
@@ -79,7 +79,6 @@ export default {
       await this.loadUserAndTransactions(user);
     },
     async handleFileUpload(file) {
-      console.log(file);
       const reader = new FileReader();
       reader.onload = async (e) => {
         const content = e.target.result;
@@ -142,7 +141,6 @@ export default {
       for (const { keyword, category } of this.$store.getters.categories) {
         const regex = new RegExp(`\\b${keyword}\\b`, 'i');
         if (regex.test(description)) {
-          console.log(description, category);
           return category;
         }
       }
