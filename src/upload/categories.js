@@ -76,6 +76,15 @@ module.exports = [
     { keyword: 'costela', category: 'Alimentação' },
     { keyword: 'costelao', category: 'Alimentação' },
     { keyword: 'costelão', category: 'Alimentação' },
+
+    { keyword: 'agua', category: 'Moradia' },
+    { keyword: 'água', category: 'Moradia' },
+    { keyword: 'luz', category: 'Moradia' },
+    { keyword: 'gás', category: 'Moradia' },
+    { keyword: 'gas', category: 'Moradia' },
+    { keyword: 'condominio', category: 'Moradia' },
+    { keyword: 'condomínio', category: 'Moradia' },
+    { keyword: 'aluguel', category: 'Moradia' },
   
     // Transporte
     { keyword: 'posto', category: 'Transporte' },
@@ -138,6 +147,19 @@ module.exports = [
     { keyword: 'frango', category: 'Alimentação' },
     { keyword: 'carne', category: 'Alimentação' },
     { keyword: 'pao', category: 'Alimentação' },
+    { keyword: 'pani', category: 'Alimentação' },
+    { keyword: 'panif', category: 'Alimentação' },
+    { keyword: 'paes', category: 'Alimentação' },
+    { keyword: 'pães', category: 'Alimentação' },
+    { keyword: 'horta', category: 'Alimentação' },
+    { keyword: 'coffee', category: 'Alimentação' },
+    { keyword: 'café', category: 'Alimentação' },
+    { keyword: 'donuts', category: 'Alimentação' },
+    { keyword: 'calzone', category: 'Alimentação' },
+    { keyword: 'kalzone', category: 'Alimentação' },
+    { keyword: 'grill', category: 'Alimentação' },
+    { keyword: 'pastel', category: 'Alimentação' },
+    { keyword: 'gratinaria', category: 'Alimentação' },
 
     // Saúde
     { keyword: 'drogasil', category: 'Saúde' },
@@ -253,7 +275,23 @@ module.exports = [
     { keyword: 'plano saúde', category: 'Saúde' },
     { keyword: 'seguro saúde', category: 'Saúde' },
     { keyword: 'operadora de saúde', category: 'Saúde' },
+    { keyword: 'ótica', category: 'Saúde' },
+    { keyword: 'otica', category: 'Saúde' },
+    { keyword: 'optica', category: 'Saúde' },
+    { keyword: 'pharma', category: 'Beleza' },
+    { keyword: 'óculos', category: 'Beleza' },
+    { keyword: 'oculos', category: 'Beleza' },
+
+    { keyword: 'maquiagem', category: 'Saúde' },
     { keyword: 'make', category: 'Saúde' },
+    { keyword: 'depil', category: 'Beleza' },
+    { keyword: 'salão', category: 'Beleza' },
+    { keyword: 'salao', category: 'Beleza' },
+    { keyword: 'barba', category: 'Beleza' },
+    { keyword: 'barbearia', category: 'Beleza'},
+    { keyword: 'cosmético', category: 'Beleza'},
+    { keyword: 'cosmetico', category: 'Beleza'},
+    
   
     // Lazer
     { keyword: 'cinema', category: 'Lazer' },
@@ -336,6 +374,11 @@ module.exports = [
     { keyword: 'jardinagem', category: 'Compras' },
     { keyword: 'petshop', category: 'Compras' },
     { keyword: 'tabacaria', category: 'Compras' },
+    { keyword: 'daju', category: 'Compras' },
+    { keyword: 'tecidos', category: 'Compras' },
+    { keyword: 'tecido', category: 'Compras' },
+    { keyword: 'calcados', category: 'Compras' },
+    { keyword: 'calçados', category: 'Compras' },
 
     { keyword: 'outros', category: 'Outros' },
 
