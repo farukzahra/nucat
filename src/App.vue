@@ -16,7 +16,7 @@
               <div v-else>
                 <v-row>
                   <v-col>
-                    <v-img src="logo.jpg" class="logo-image" />
+                    <v-img src="logo.png" class="logo-image" />
                   </v-col>
                   <v-col cols="8">
                     <FileUpload @file-uploaded="handleFileUpload" />
@@ -67,11 +67,16 @@ export default {
       return this.generateCategoryColors();
     },
   },
+  async mounted() {
+    await this.loadCategories();
+    this.generateCategoryColors();
+  },
   async created() {
-    await this.loadCategories();    
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         await this.loadUserAndTransactions(user);
+        await this.loadCategories();
+        this.generateCategoryColors();
       } else {
         this.$store.commit('SET_USER', null);
         this.$store.commit('SET_TRANSACTIONS', []);

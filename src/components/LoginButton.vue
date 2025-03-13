@@ -1,7 +1,7 @@
 <template>
 
   <section id="sobre">
-    <p><v-img src="logo.jpg" class="logo-image" /></p>
+    <p><v-img src="logo.png" class="logo-image" /></p>
     <h2>Sobre o NUcat</h2>
     <p>O NUcat é um aplicativo projetado para ajudar você a entender melhor seus gastos. Com ele, você pode carregar
       extratos bancários no formato OFX, categorizar automaticamente seus gastos e visualizar gráficos detalhados para
