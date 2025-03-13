@@ -68,6 +68,7 @@ export default {
     },
   },
   async created() {
+    await this.loadCategories();    
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         await this.loadUserAndTransactions(user);
@@ -78,7 +79,7 @@ export default {
     });
   },
   methods: {
-    ...mapActions(['loadUserAndTransactions', 'logout']),
+    ...mapActions(['loadUserAndTransactions', 'logout', 'loadCategories']),
     async handleLoginSuccess(user) {
       await this.loadUserAndTransactions(user);
     },
@@ -143,7 +144,7 @@ export default {
     inferCategory(description) {
       description = description.toLowerCase();
       for (const { keyword, category } of this.$store.getters.categories) {
-        const regex = new RegExp(`\\b${keyword}\\b`, 'i');
+        const regex = new RegExp(`\\b${keyword}\\b|${keyword}`, 'i');
         if (regex.test(description)) {
           return category;
         }

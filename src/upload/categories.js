@@ -1,8 +1,5 @@
 // src/assets/categories.js
 module.exports = [
-    //Pix
-    { keyword: 'pix', category: 'Pix' },
-
     // Alimentação
     { keyword: 'gula', category: 'Alimentação' },
     { keyword: 'supermercado', category: 'Alimentação' },
@@ -76,10 +73,12 @@ module.exports = [
     { keyword: 'comida rápida', category: 'Alimentação' },
     { keyword: 'fast casual', category: 'Alimentação' },
     { keyword: 'popeyes', category: 'Alimentação' },
+    { keyword: 'costela', category: 'Alimentação' },
+    { keyword: 'costelao', category: 'Alimentação' },
+    { keyword: 'costelão', category: 'Alimentação' },
   
     // Transporte
     { keyword: 'posto', category: 'Transporte' },
-    { keyword: 'pao', category: 'Transporte' },
     { keyword: 'combustível', category: 'Transporte' },
     { keyword: 'gasolina', category: 'Transporte' },
     { keyword: 'etanol', category: 'Transporte' },
@@ -102,6 +101,7 @@ module.exports = [
     { keyword: 'pneus', category: 'Transporte' },
     { keyword: 'revisão', category: 'Transporte' },
     { keyword: 'seguro de carro', category: 'Transporte' },
+
     { keyword: 'pão de açúcar', category: 'Alimentação' },
     { keyword: 'extra', category: 'Alimentação' },
     { keyword: 'carrefour', category: 'Alimentação' },
@@ -129,6 +129,15 @@ module.exports = [
     { keyword: 'super nosso', category: 'Alimentação' },
     { keyword: 'g barbosa', category: 'Alimentação' },
     { keyword: 'jacomar', category: 'Alimentação' },
+    { keyword: 'cafe', category: 'Alimentação' },
+    { keyword: 'conveniencia', category: 'Alimentação' },
+    { keyword: 'refeicoes', category: 'Alimentação' },
+    { keyword: 'chocolate', category: 'Alimentação' },
+    { keyword: 'waffles', category: 'Alimentação' },
+    { keyword: 'panificadora', category: 'Alimentação' },
+    { keyword: 'frango', category: 'Alimentação' },
+    { keyword: 'carne', category: 'Alimentação' },
+    { keyword: 'pao', category: 'Alimentação' },
 
     // Saúde
     { keyword: 'drogasil', category: 'Saúde' },
@@ -244,6 +253,7 @@ module.exports = [
     { keyword: 'plano saúde', category: 'Saúde' },
     { keyword: 'seguro saúde', category: 'Saúde' },
     { keyword: 'operadora de saúde', category: 'Saúde' },
+    { keyword: 'make', category: 'Saúde' },
   
     // Lazer
     { keyword: 'cinema', category: 'Lazer' },
@@ -325,6 +335,7 @@ module.exports = [
     { keyword: 'material de construção', category: 'Compras' },
     { keyword: 'jardinagem', category: 'Compras' },
     { keyword: 'petshop', category: 'Compras' },
+    { keyword: 'tabacaria', category: 'Compras' },
 
     { keyword: 'outros', category: 'Outros' },
 
@@ -333,4 +344,6 @@ module.exports = [
     { keyword: 'tesouro', category: 'Investimento' },
     
     { keyword: 'boleto', category: 'Boleto' },
+
+    { keyword: 'pix', category: 'Pix' },
   ];

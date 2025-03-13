@@ -1,6 +1,7 @@
 // src/store/index.js
 import { createStore } from 'vuex';
 import { auth, db, doc, getDoc, getDocs, collection } from '@/firebase';
+import { load } from 'webfontloader';
 
 const store = createStore({
   state: {
@@ -29,6 +30,11 @@ const store = createStore({
     },
   },
   actions: {
+    async loadCategories({ commit }) {
+      const categoriesSnapshot = await getDocs(collection(db, 'categories'));
+      const categories = categoriesSnapshot.docs.map(doc => doc.data());
+      commit('SET_CATEGORIES', categories);
+    },
     async loadUserAndTransactions({ commit }, user) {
       commit('SET_USER', user);
 
@@ -40,9 +46,6 @@ const store = createStore({
             const transactions = docSnap.data().transactions.filter(tx => tx.amount < 0);
             commit('SET_TRANSACTIONS', transactions);
           }
-          const categoriesSnapshot = await getDocs(collection(db, 'categories'));
-          const categories = categoriesSnapshot.docs.map(doc => doc.data());
-          commit('SET_CATEGORIES', categories);
         } catch (error) {
           console.error('Erro ao carregar transações:', error);
         }
